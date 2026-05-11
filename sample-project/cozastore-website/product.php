@@ -248,12 +248,20 @@ include('../adminpanel/connection.php');
 			</div>
 
 			<div class="row isotope-grid">
+				<!-- dynamic product fetch -->
+         <?php
+if (isset($_GET['catid'])) {
+$cat_id=$_GET['catid'];
+$query=mysqli_query($con,"SELECT * FROM `product` WHERE cat_id=$cat_id");
+while($col=mysqli_fetch_array($query)){	 
+		 ?>
+
 				
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-08.jpg" alt="IMG-PRODUCT">
+							<img height="200" src="../adminpanel/img/<?php echo $col[4];?>"  alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
@@ -262,12 +270,12 @@ include('../adminpanel/connection.php');
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pieces Metallic Printed
+								<a href="product-detail.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									<?php echo $col[1];?>
 								</a>
 
 								<span class="stext-105 cl3">
-									$18.96
+									<?php echo $col[3];?>
 								</span>
 							</div>
 
@@ -280,12 +288,21 @@ include('../adminpanel/connection.php');
 						</div>
 					</div>
 				</div>
+				<?php
+}
+}
+else{
+$query=mysqli_query($con,"SELECT * FROM `product`");
+while($col=mysqli_fetch_array($query)){	 
 
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
+
+	?>
+	
+<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="images/product-09.jpg" alt="IMG-PRODUCT">
+							<img height="200" src="../adminpanel/img/<?php echo $col[4];?>"  alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
@@ -294,12 +311,12 @@ include('../adminpanel/connection.php');
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Converse All Star Hi Plimsolls
+								<a href="product-detail.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									<?php echo $col[1];?>
 								</a>
 
 								<span class="stext-105 cl3">
-									$75.00
+									<?php echo $col[3];?>
 								</span>
 							</div>
 
@@ -312,8 +329,13 @@ include('../adminpanel/connection.php');
 						</div>
 					</div>
 				</div>
+				
 
-			
+			<?php 
+}
+
+}
+			?>
 			</div>
 
 			<!-- Load more -->

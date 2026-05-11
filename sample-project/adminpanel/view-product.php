@@ -85,7 +85,7 @@ if (isset($_GET['dlt-id'])) {
 
     $dlt_querry = mysqli_query($con, "DELETE FROM `product` WHERE Id = $dltID");
     if ($dlt_querry) {
-        echo "<script>alert('Category Deleted Successfully')
+        echo "<script>alert('product Deleted Successfully')
     location.assign('view-product.php')
     </script>";
     } else {
