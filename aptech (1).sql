@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2026 at 08:18 PM
+-- Generation Time: May 13, 2026 at 06:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,9 +49,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`Id`, `Category_name`, `Category_description`, `Image`) VALUES
-(2, 'watch', 'royal', 'watch.jpg'),
-(4, 'laptop', 'hp', 'hplaptop.jpg'),
-(5, 'mobile', 'Iphone', 'iphoneimage.jpg');
+(4, 'Home appliances', 'all types of products available', 'ha.jpg'),
+(5, 'electronics', 'latest model in reasonable price', 'elec.jpg'),
+(6, 'accesories', 'latest collection', 'acc.jpg');
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,20 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Id`, `name`, `quantity`, `price`, `image`, `cat_id`) VALUES
-(2, 'Iphone12promax', 23, 40000, 'iphoneimage.jpg', 5);
+(1, 'oven', 13, 50000, 'o.jpg', 4),
+(3, 'refrigrator', 30, 400000, 'r.jpg', 4),
+(4, 'microwave', 30, 40000, 'm.jpg', 4),
+(5, 'washing machine', 30, 50000, 'washing.jpg', 4),
+(6, 'dishwasher', 12, 80000, 'dishwasher.jpg', 4),
+(7, 'infinix phone', 30, 50000, 'infini.jpg', 5),
+(8, 'iphone', 12, 500000, 'iphone.jpg', 5),
+(9, 'redmi', 28, 50000, 'redmi.jpg', 5),
+(10, 'hp laptop', 20, 180000, 'hp.jpg', 5),
+(11, 'dell laptop', 20, 120000, 'dell.jpg', 5),
+(12, 'braclets', 150, 350, 'braclets.jpg', 6),
+(13, 'sunglasses', 200, 1000, 'sn.jpg', 6),
+(14, 'watch', 70, 2500, 'watch.jpg', 6),
+(15, 'bag', 190, 5000, 'bag.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -195,7 +208,7 @@ ALTER TABLE `register_user`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `emp`
@@ -207,7 +220,7 @@ ALTER TABLE `emp`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `register_user`
