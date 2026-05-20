@@ -1,5 +1,4 @@
 <?php
-include('query.php');
 include('header.php');
 include('../adminpanel/connection.php');
 if (isset($_GET['proid'])) {
