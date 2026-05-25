@@ -71,10 +71,11 @@ include('../adminpanel/connection.php');
     $pass=$_POST['pass'];
     $query=mysqli_query($con,"SELECT * from register_buyer where email='$email' AND pas='$pass'");
     $checker=mysqli_num_rows($query);
-    $array=mysqli_fetch_array($query);
-    $_SESSION['user_name']=$array[1];
     // it checks whether the email and password given exsit in the same row i.e same record
     if ($checker) {
+        $array=mysqli_fetch_assoc($query);
+    $_SESSION['user_id']=$array['id'];
+    $_SESSION['user_name']=$array['First_name'];
         echo "<script>alert('login Successfully')
     location.assign('shoping-cart.php')</script>";
     } else {

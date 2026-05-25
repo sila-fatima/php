@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2026 at 06:33 AM
+-- Generation Time: May 25, 2026 at 07:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,7 +51,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`Id`, `Category_name`, `Category_description`, `Image`) VALUES
 (4, 'Home appliances', 'all types of products available', 'ha.jpg'),
 (5, 'electronics', 'latest model in reasonable price', 'elec.jpg'),
-(6, 'accesories', 'latest collection', 'acc.jpg');
+(6, 'accesories', 'latest collection', 'acc.jpg'),
+(8, 'cloths', 'western and eastern available', 'cloths.png');
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,30 @@ INSERT INTO `emp` (`id`, `name`, `email`, `PASSWORD`, `gender`, `City`, `Age`) V
 (6, 'rahim', '54367@gmai', 'zusbnbxd', 'male', 'lahore', 28),
 (7, 'tahir', '`123@gmail', 'jsjzvxcv', 'male', 'peshawar', 28),
 (8, 'haris', '123@gmqil.', NULL, 'male', 'peshawar', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `oid` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(23) NOT NULL,
+  `pro_id` int(11) NOT NULL,
+  `pro_name` varchar(23) NOT NULL,
+  `pro_price` int(11) NOT NULL,
+  `pro_qty` varchar(23) NOT NULL,
+  `pro_img` varchar(230) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`oid`, `user_id`, `user_name`, `pro_id`, `pro_name`, `pro_price`, `pro_qty`, `pro_img`) VALUES
+(1, 1, 'ahmed', 7, 'infinix phone', 50000, '1', 'infini.jpg');
 
 -- --------------------------------------------------------
 
@@ -117,6 +142,28 @@ INSERT INTO `product` (`Id`, `name`, `quantity`, `price`, `image`, `cat_id`) VAL
 (13, 'sunglasses', 200, 1000, 'sn.jpg', 6),
 (14, 'watch', 70, 2500, 'watch.jpg', 6),
 (15, 'bag', 190, 5000, 'bag.jpg', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `register_buyer`
+--
+
+CREATE TABLE `register_buyer` (
+  `id` int(11) NOT NULL,
+  `First_name` varchar(23) NOT NULL,
+  `Last_name` varchar(23) NOT NULL,
+  `email` varchar(13) NOT NULL,
+  `pas` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `register_buyer`
+--
+
+INSERT INTO `register_buyer` (`id`, `First_name`, `Last_name`, `email`, `pas`) VALUES
+(1, 'ahmed', 'khan', '123@gmail.com', 'qwert'),
+(2, 'khan', 'salim', '345@gmail.com', 'asdf');
 
 -- --------------------------------------------------------
 
@@ -188,11 +235,23 @@ ALTER TABLE `emp`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`oid`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `cat_id` (`cat_id`);
+
+--
+-- Indexes for table `register_buyer`
+--
+ALTER TABLE `register_buyer`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `register_user`
@@ -208,7 +267,7 @@ ALTER TABLE `register_user`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `emp`
@@ -217,10 +276,22 @@ ALTER TABLE `emp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `register_buyer`
+--
+ALTER TABLE `register_buyer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `register_user`
