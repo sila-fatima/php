@@ -44,7 +44,7 @@ if (isset($_GET['upd_id'])) {
             </div>
         </div>
              <select name='cat' id=''>
-                        <option  Selected>Chose Category</option>
+                        <option value=""  Selected>Chose Category</option>
                         <?php
                         $dynamic_dropdown_query = mysqli_query($con, 'SELECT * FROM `categories`');
                         while ($dynamic_dropdown_fetch = mysqli_fetch_array($dynamic_dropdown_query)) {
@@ -107,6 +107,9 @@ if (isset($_POST['update'])) {
     $upd_qty = $_POST['qty'];
     $upd_price = $_POST['price'];
     $upd_catId = $_POST['cat'];
+    // category not selected
+    // variable(condition)?"if is true":"else is true"
+    $catupd=($upd_catId=="")?"":",`cat_id`='$upd_catId'";
     if (!empty($_FILES['p-img']['tmp_name'])) {
         $upd_Imagetmpname = $_FILES['p-img']['tmp_name'];
         $upd_ImageOrgname = $_FILES['p-img']['name'];
@@ -115,7 +118,7 @@ if (isset($_POST['update'])) {
         if ($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg') {
             $uploader = move_uploaded_file($upd_Imagetmpname, $img_path);
             if ($uploader) {
-                mysqli_query($con, "UPDATE `product` SET `name`='$upd_name',`quantity`='$upd_qty',`price`='$upd_price',`image`='$upd_ImageOrgname',`cat_id`='$upd_catId'  WHERE Id =$upd_id");
+                mysqli_query($con, "UPDATE `product` SET `name`='$upd_name',`quantity`='$upd_qty',`price`='$upd_price',`image`='$upd_ImageOrgname'$catupd  WHERE Id =$upd_id");
                 echo "<script>alert('Updated Sucessfully')
         location.assign('view-product.php')
         </script>";
@@ -126,8 +129,11 @@ if (isset($_POST['update'])) {
             echo "<script>alert('Extension doesn`t match')</script>";
         }
 
-    } else {
-        mysqli_query($con, "UPDATE `product` SET `name`='$upd_name',`quantity`='$upd_qty',`price`='$upd_price',`cat_id`='$upd_catId'  WHERE Id =$upd_id");
+    }
+    
+    
+    else {
+        mysqli_query($con, "UPDATE `product` SET `name`='$upd_name',`quantity`='$upd_qty',`price`='$upd_price'$catupd  WHERE Id =$upd_id");
         echo "<script>alert('Updated Sucessfully')
         location.assign('view-product.php')</script>";
     }
